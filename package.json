@@ -1,0 +1,11 @@
+{
+  "name": "beem",
+  "version": "1.0.0",
+  "description": "## Instruction",
+  "main": "./nodejs/server.js",
+  "scripts": {
+    "start": "node ./nodejs/get.raw.data.js && node ./nodejs/server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

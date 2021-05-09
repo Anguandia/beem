@@ -5,7 +5,7 @@ let init = "{\n";
 
 function saveToJson() {
   let MCC, MNC, ISO, country, countryCode, network;
-  const inputStream = fs.createReadStream("data.txt");
+  const inputStream = fs.createReadStream("./nodejs/data.txt");
   const readline = lines.createInterface({
     input: inputStream,
     crlfDelay: Infinity,
@@ -32,13 +32,14 @@ function saveToJson() {
         init += content;
         return init;
       }
-      const writeStream = fs.createWriteStream("data.json", {
+      const writeStream = fs.createWriteStream("./nodejs/data.json", {
         autoClose: true,
         emitClose: true,
       });
       writeStream.write(writeJson(line), () => {});
     }
   });
+  readline.on('close', () => fs.appendFile('./nodejs/data.json', '\n}', () => {}));
 }
 
 module.exports = { saveToJson };
